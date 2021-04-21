@@ -1,0 +1,48 @@
+
+<style>
+    #button{
+        background-color: red;
+        width: 200px;
+        height: 35px;
+    }
+    #obrazek img{
+        width: 40px;
+        padding-top: 5px;
+        filter: invert(100%);
+    }
+    #obrazek{
+        float: left;
+        background-color: #7bed9f;
+        width: 50px;
+        text-align: center;
+        height: 50px;
+    }
+    #napis{
+        float: left;
+        width: 150px;
+        text-align: center;
+        padding-top: 15px;
+        background-color: #2ed573;
+        height: 100%;
+    }
+</style>
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}: {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+
+<a href="{% url 'polls:detail' question.id %}">
+    <div id="button">
+        <div id="napis">
+            Vote again?
+        </div>
+        <div id="obrazek">
+            <img src="http://pluspng.com/img-png/png-repeat-open-1000.png">
+        </div>
+    </div>
+</a>
